@@ -1,27 +1,21 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import CountryDetails from './components/CountryDetails'
+import Main from './pages/Main'
 
 function App() {
-  const url = "https://restcountries.com/v3.1/all";
-
-  useEffect(() => {
-    axios.get(url)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
   return (
-    <div className='max-w-8xl mx-auto px-10'>
-      <Navbar />
-      <Header />
-    </div>
-  );
+    <Router>
+      <div className='max-w-8xl mx-auto px-10'>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/country/:cca3" element={<CountryDetails />} />
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App
