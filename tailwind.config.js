@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Jost', 'sans-serif']
+      },
       maxWidth: {
         '8xl': '100rem',
       },

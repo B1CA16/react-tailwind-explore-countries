@@ -43,7 +43,7 @@ const CountriesDisplay = () => {
         onChange={handleSearchChange}
         className="px-4 py-2 w-1/3 mt-10 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <div className='mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+      <div className='mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12'>
         {filteredCountries.map((country) => (
           <CountrieCard key={country.cca3} country={country} />
         ))}
