@@ -26,7 +26,7 @@ const CountrieCard = ({ country }) => {
       </div>
       <Link
         to={`/country/${country.cca3}`}
-        className="font-bold transition-colors duration-300 ease-in-out text-neutral-700 ml-auto mr-4 flex items-center border-b-2 border-b-transparent hover:border-b-blue-800 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800"
+        className="font-bold transition-colors duration-300 ease-in-out text-neutral-700 ml-auto mt-auto mr-4 flex items-center border-b-2 border-b-transparent hover:border-b-blue-800 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800"
       >
         Learn More
         <span className='pl-1 font-extrabold'>&#62;</span>
