@@ -28,15 +28,15 @@ const CountryDetails = () => {
           const borderNames = borderResponses.map((res) => res.data[0].name.common);
           setBorders(borderNames);
         }
-    
+
         // Fetch images from Unsplash
         const imageResponse = await axios.get(`https://api.unsplash.com/search/photos`, {
           params: { query: countryData.name.common, per_page: 5 },
           headers: { Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}` }
         });
-    
+
         console.log('Unsplash API Response:', imageResponse.data); // Log the response
-    
+
         if (imageResponse.data && imageResponse.data.results) {
           setImages(imageResponse.data.results.map((img) => img.urls.regular));
         } else {
@@ -50,7 +50,7 @@ const CountryDetails = () => {
     fetchCountry();
   }, [cca3]);
 
-  if (!country) return <p>Loading...</p>;
+  if (!country) return <div className='mx-auto w-24 h-24 place-self-center border-4 border-neutral-400 border-t-blue-600 rounded-full animate-spin'></div>;
 
   const countryName = country.name?.common || 'Unknown Country';
   const officialName = country.name?.official || 'N/A';
@@ -75,25 +75,27 @@ const CountryDetails = () => {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <div className="flex gap-8">
-        <div className="bg-gray-200 shadow-md p-6 rounded-lg w-64 flex-shrink-0">
-          <h1 className="text-3xl font-bold mb-4">{countryName}</h1>
-          {flagUrl && (
-            <img
-              src={flagUrl}
-              alt={`${countryName} flag`}
-              className="w-full h-auto rounded-md mb-6"
-              title='Flag'
-            />
-          )}
-          {coatOfArmsUrl && (
-            <img
-              src={coatOfArmsUrl}
-              alt={`${countryName} coat of arms`}
-              className="w-3/4 h-auto mx-auto rounded-md mb-6"
-              title='Coat of Arms'
-            />
-          )}
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="bg-gray-200 shadow-md p-6 rounded-lg w-full md:w-64 flex-shrink-0">
+          <h1 className="text-2xl md:text-3xl font-bold mb-4">{countryName}</h1>
+          <div className="flex flex-col items-center">
+            {flagUrl && (
+              <img
+                src={flagUrl}
+                alt={`${countryName} flag`}
+                className="w-full max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-md mb-6"
+                title='Flag'
+              />
+            )}
+            {coatOfArmsUrl && (
+              <img
+                src={coatOfArmsUrl}
+                alt={`${countryName} coat of arms`}
+                className="w-full max-w-xs md:max-w-sm lg:max-w-md h-auto mx-auto rounded-md mb-6"
+                title='Coat of Arms'
+              />
+            )}
+          </div>
           <ul className="space-y-2 text-lg">
             <li><strong>Capital:</strong> {capital}</li>
             <li><strong>Population:</strong> {population}</li>
@@ -108,7 +110,7 @@ const CountryDetails = () => {
         </div>
 
         {/* Right Content */}
-        <div className="flex-grow text-lg leading-relaxed px-10">
+        <div className="flex-grow text-lg leading-relaxed px-4 md:px-10">
           <p className="mb-3">
             <strong>{countryName}</strong> is officially known as <strong>{officialName}</strong>. It is a country located in the <strong>{region}</strong> region {subregion && <span>{subregion}</span>}.
           </p>
@@ -121,7 +123,7 @@ const CountryDetails = () => {
           </p>
           <p className="mb-3">
             {countryName} covers an area of <strong>{area}</strong>
-            {borders.length > 0 && `, and it shares its borders with: ${borders.join(', ')}.`}
+            {borders.length > 0 && `, and it shares its borders with ${borders.join(', ')}.`}
           </p>
           <p className="mb-3">
             The currency used is {currencies}.
@@ -137,7 +139,7 @@ const CountryDetails = () => {
                     <img
                       src={imgUrl}
                       alt={`Image ${index + 1}`}
-                      className="w-full h-[30vw] object-cover mx-auto"
+                      className="w-full h-[30vw] sm:h-[40vw] object-cover mx-auto"
                     />
                   </Carousel.Item>
                 ))}
