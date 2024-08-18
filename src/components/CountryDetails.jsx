@@ -76,7 +76,7 @@ const CountryDetails = () => {
   return (
     <div className="container mx-auto py-10 px-4">
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="bg-gray-200 shadow-md p-6 rounded-lg w-full md:w-64 flex-shrink-0">
+        <div className="bg-blue-100/20 shadow-md p-6 rounded-lg w-full md:w-64 flex-shrink-0">
           <h1 className="text-2xl md:text-3xl font-bold mb-4">{countryName}</h1>
           <div className="flex flex-col items-center">
             {flagUrl && (
