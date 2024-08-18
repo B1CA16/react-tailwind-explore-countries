@@ -18,9 +18,9 @@ const Model = () => {
 const Globe = () => {
   return (
     <Canvas camera={{ position: [0, 0, 150], fov: 50 }} style={{ width: '100%', height: '100%' }}>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.75} />
       <directionalLight position={[5, 5, 5]} />
-      <pointLight position={[-10, -10, -10]} intensity={1} />
+      <pointLight position={[10, 10, 10]} intensity={1} />
       <Suspense fallback={null}>
         <Model />
         <OrbitControls enableZoom={false} />

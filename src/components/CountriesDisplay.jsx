@@ -8,7 +8,7 @@ const CountriesDisplay = () => {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [regionFilter, setRegionFilter] = useState('');
-  const [popSortOption, setPopSortOption] = useState('default');
+  const [popSortOption, setPopSortOption] = useState('');
 
   useEffect(() => {
     const fetchCountries = async () => {
